@@ -4,6 +4,7 @@ import bodyPaser from 'body-parser';
 import cors from 'cors';
 import path from 'path';
 import route from './routes';
+import { sendSuccess } from './utils'
 
 const app = express();
 app.use(logger('dev'));
@@ -13,10 +14,9 @@ app.use(bodyPaser.urlencoded({
 }));
 app.use(cors());
 app.options('*', cors());
-app.use('/', express.static(path.resolve(__dirname, '..', 'dist')));
 app.use('/api/', route);
-app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '..', 'dist', 'index.html'));
+app.use('/', (req, res) => {
+  sendSuccess(res, 200, 'Welcome to external integration');
 });
 
 export default app;

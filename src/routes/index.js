@@ -4,7 +4,7 @@ import location from './location';
 import media from './media';
 import quiz from './quiz';
 import { WEATHER, LOCATION, MEDIA, QUIZ } from '../constant';
-import { sendFail } from '../utils';
+import { sendSuccess } from '../utils';
 
 const route = express.Router();
 
@@ -19,7 +19,7 @@ route.use(MEDIA, media);
 route.use(QUIZ, quiz);
 
 route.use('/', (req, res) => {
-  sendFail(res, 404, 'Route was not found');
+  sendSuccess(res, 200, 'Welcome to external integration API');
 });
 
 export default route;
