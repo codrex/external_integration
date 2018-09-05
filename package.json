@@ -6,7 +6,7 @@
     "lint": "eslint --ext .js src/ --fix",
     "start:dev": "nodemon ./src/bin/www.js --exec babel-node --presets es2015",
     "build": "babel --presets es2015 src -d lib",
-    "heroku-postbuild": "build",
+    "heroku-postbuild": "yarn build",
     "start": "node ./lib/bin/www.js"
   },
   "engines": {
